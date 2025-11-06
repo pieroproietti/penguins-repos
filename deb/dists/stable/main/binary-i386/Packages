@@ -1,0 +1,20 @@
+Package: penguins-eggs
+Source: penguins-eggs
+Version: 25.11.6-2
+Architecture: i386
+Maintainer: Piero Proietti
+Depends: coreutils, cryptsetup, cryptsetup-bin, cryptsetup-initramfs, curl, dbus-bin | uuidgen-runtime, dosfstools, dpkg-dev, git, gpg, grub-efi-ia32-bin, grub-pc-bin, ipxe, isolinux, jq, live-boot | dracut, live-boot-doc | dracut, live-boot-initramfs-tools | dracut, live-config-systemd | live-config-sysvinit | dracut, live-tools | dracut-live, lvm2, nodejs (>= 18), parted, policykit-1 | pkexec, pxelinux, rsync, squashfs-tools, sshfs, syslinux, xorriso
+Suggests: calamares
+Conflicts: calamares-settings-debian, calamares-settings-ubuntu, eggs
+Replaces: eggs
+Filename: pool/main/penguins-eggs_25.11.6-2_i386.deb
+Size: 21188848
+MD5sum: 891e396791342b964efbc0313fa6d841
+SHA1: 13699498c69442b6fa9412102ef04702eeec7693
+SHA256: 54b4cb8a75f6bd1349ef862dc1ed876ea1426cd4547c477cf506d3ff5f970304
+Description: A remaster system tool, compatible with Arch, Debian, Devuan, Ubuntu and others
+ Penguins-eggs is a versatile remastering tool that allows users to create
+ custom live ISO images. It supports multiple Linux distributions, including
+ Arch, Debian, Devuan, Ubuntu, and others.
+Standards-Version: 4.5.0
+

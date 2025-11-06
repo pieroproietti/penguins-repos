@@ -1,0 +1,33 @@
+#!/bin/bash
+clear
+VER=$1
+# Controlla se la variabile VER è vuota
+if [ -z "$VER" ]; then
+  echo "Errore: è necessario specificare un numero di versione."
+  echo "Uso: $0 <versione>"
+  exit 1
+fi
+
+# Chiede la password in modo sicuro (non la mostra a schermo)
+read -sp "Inserisci la password per root@192.168.1.2: " SSH_PASSWORD
+echo # Aggiunge una riga vuota per pulizia
+
+
+# Esporta la password per sshpass
+export SSHPASS="$SSH_PASSWORD"
+
+# Esegui i comandi scp usando sshpass con l'opzione -e (legge da variabile d'ambiente)
+sshpass -e scp ./alpine/penguins-eggs*$VER*r?.apk    root@192.168.1.2:/eggs/alpine/x86_64/
+sshpass -e scp ./arch/penguins-eggs*$VER*any.pkg.tar.zst                     root@192.168.1.2:/eggs/aur
+sshpass -e scp ./deb/pool/main/penguins-eggs*$VER*amd64.deb                 root@192.168.1.2:/eggs/debs
+sshpass -e scp ./deb/pool/main/penguins-eggs*$VER*arm64.deb                  root@192.168.1.2:/eggs/debs
+sshpass -e scp ./deb/pool/main/penguins-eggs*$VER*i386.deb                   root@192.168.1.2:/eggs/debs
+sshpass -e scp ./manjaro/penguins-eggs-*$VER*-any.pkg.tar.zst                root@192.168.1.2:/eggs/manjaro
+sshpass -e scp ./fedora/42/penguins-eggs-*$VER*-1.fc42.x86_64.rpm        root@192.168.1.2:/eggs/fedora
+sshpass -e scp ./el9/penguins-eggs-*$VER*-1.el9.x86_64.rpm              root@192.168.1.2:/eggs/el9
+sshpass -e scp ./opensuse/leap/penguins-eggs-*$VER*-1.x86_64.rpm         root@192.168.1.2:/eggs/opensuse
+
+# Pulisce le variabili per sicurezza
+unset SSHPASS SSH_PASSWORD
+
+echo "Copia completata!"
